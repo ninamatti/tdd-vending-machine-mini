@@ -1,7 +1,7 @@
 const VendingMachine = require("../VendingMachine");
 const { expect } = require("chai");
 
-describe("Insert Coins", () => {
+describe.only("Insert Coins", () => {
   const machine = new VendingMachine();
   it("should be a method of vending machine", () => {
     expect(typeof machine.insertCoins).to.equal("function"); // Use an ES6 getter
@@ -12,8 +12,7 @@ describe("Insert Coins", () => {
   });
   it("should store coin in till based on denomination", () => {
     machine.insertCoins(10);
-    console.log(machine.till["10"]);
-    expect(machine.till["10"]).to.equal(1); // Use an ES6 getter
+    expect(machine.till[10]).to.equal(2); // Use an ES6 getter
   });
 });
 
