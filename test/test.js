@@ -1,7 +1,7 @@
 const VendingMachine = require("../VendingMachine");
 const { expect } = require("chai");
 
-describe.only("Insert Coins", () => {
+describe("Insert Coins", () => {
   const machine = new VendingMachine();
   it("should be a method of vending machine", () => {
     expect(typeof machine.insertCoins).to.equal("function"); // Use an ES6 getter
@@ -25,7 +25,7 @@ describe("rowSelector", () => {
   it("should store the given row", () => {
     const machine = new VendingMachine();
     machine.rowSelector(2);
-    expect(machine.row).to.equal(2);
+    expect(machine.selectRow).to.equal(2);
   });
 
   it("should print and return selected row to console", () => {
@@ -44,7 +44,7 @@ describe("columnSelector", () => {
   it("should store the given column", () => {
     const machine = new VendingMachine();
     machine.columnSelector(2);
-    expect(machine.column).to.equal(2);
+    expect(machine.selectColumn).to.equal(2);
   });
 
   it("should print and return selected column to console", () => {
@@ -54,10 +54,31 @@ describe("columnSelector", () => {
   });
 });
 
+describe("dispenseProduct method", () => {
+  it("should be a method of vending machine", () => {
+    const machine = new VendingMachine();
+    expect(typeof machine.dispenseProduct).to.equal("function"); // Use an ES6 getter
+  });
+});
+
+describe("updateInventory method", () => {
+  it("should be a method of vending machine", () => {
+    const machine = new VendingMachine();
+    expect(typeof machine.updateInventory).to.equal("function"); // Use an ES6 getter
+  });
+});
+
 describe("Change Return", () => {
   it("should be a method of vending machine", () => {
     const machine = new VendingMachine();
     expect(typeof machine.changeReturn).to.equal("function"); // Use an ES6 getter
+  });
+
+  it("should return the correct amount of change", () => {
+    const machine = new VendingMachine();
+    machine.insertCoins(150);
+    let returnedAmount = machine.changeReturn();
+    expect(returnedAmount).to.equal(150); // Use an ES6 getter
   });
 });
 
@@ -75,7 +96,7 @@ describe("vending machine", () => {
   it("should accept valid coins", () => {
     // Setup
     const machine = new VendingMachine();
-    console.log(machine);
+
     // Exercise
     machine.insertCoin(500);
     // Assert
@@ -86,5 +107,12 @@ describe("vending machine", () => {
       500: 1,
     });
     expect(machine.balance).to.equal(500); // Use an ES6 getter
+  });
+
+  it("should have a balance of 0 in the beginning", () => {
+    // Setup
+    const machine = new VendingMachine();
+    // Assert
+    expect(machine.balance).to.equal(0); // Use an ES6 getter
   });
 });
