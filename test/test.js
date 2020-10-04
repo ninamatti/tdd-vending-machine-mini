@@ -16,17 +16,48 @@ describe.only("Insert Coins", () => {
   });
 });
 
+describe("rowSelector", () => {
+  it("should be a method of vending machine", () => {
+    const machine = new VendingMachine();
+    expect(typeof machine.rowSelector).to.equal("function"); // Use an ES6 getter
+  });
+
+  it("should store the given row", () => {
+    const machine = new VendingMachine();
+    machine.rowSelector(2);
+    expect(machine.row).to.equal(2);
+  });
+
+  it("should print and return selected row to console", () => {
+    const machine = new VendingMachine();
+    let rowCheck = machine.rowSelector(2);
+    expect(rowCheck).to.equal(2);
+  });
+});
+
+describe("columnSelector", () => {
+  it("should be a method of vending machine", () => {
+    const machine = new VendingMachine();
+    expect(typeof machine.columnSelector).to.equal("function"); // Use an ES6 getter
+  });
+
+  it("should store the given column", () => {
+    const machine = new VendingMachine();
+    machine.columnSelector(2);
+    expect(machine.column).to.equal(2);
+  });
+
+  it("should print and return selected column to console", () => {
+    const machine = new VendingMachine();
+    let columnCheck = machine.columnSelector(3);
+    expect(columnCheck).to.equal(3);
+  });
+});
+
 describe("Change Return", () => {
   it("should be a method of vending machine", () => {
     const machine = new VendingMachine();
     expect(typeof machine.changeReturn).to.equal("function"); // Use an ES6 getter
-  });
-});
-
-describe("Selector", () => {
-  it("should be a method of vending machine", () => {
-    const machine = new VendingMachine();
-    expect(typeof machine.selector).to.equal("function"); // Use an ES6 getter
   });
 });
 
