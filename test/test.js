@@ -59,6 +59,17 @@ describe("dispenseProduct method", () => {
     const machine = new VendingMachine();
     expect(typeof machine.dispenseProduct).to.equal("function"); // Use an ES6 getter
   });
+
+  it("should reset row and column to 0", () => {
+    const machine = new VendingMachine();
+    machine.rowSelector(3);
+    machine.columnSelector(4);
+    console.log("row", machine.selectRow, "column", machine.selectColumn);
+    machine.dispenseProduct("orangeJuice");
+    console.log("row", machine.selectRow, "column", machine.selectColumn);
+    expect(machine.selectRow).to.equal(0);
+    expect(machine.selectColumn).to.equal(0);
+  });
 });
 
 describe("updateInventory method", () => {
