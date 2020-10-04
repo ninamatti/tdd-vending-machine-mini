@@ -66,6 +66,12 @@ describe("updateInventory method", () => {
     const machine = new VendingMachine();
     expect(typeof machine.updateInventory).to.equal("function"); // Use an ES6 getter
   });
+
+  it("should reduce inventory by 1", () => {
+    const machine = new VendingMachine();
+    machine.updateInventory("orangeJuice");
+    expect(machine.inventory[0][0].count).to.equal(4); // Use an ES6 getter
+  });
 });
 
 describe("Change Return", () => {
